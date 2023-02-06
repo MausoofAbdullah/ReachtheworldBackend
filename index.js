@@ -15,7 +15,6 @@ import adminRoute from "./Routes/adminRoute.js"
 //Routes
 const app = express();
 
-app.options('*', cors())
 
 //to serve images for public
 app.use(express.static("public"))
@@ -24,7 +23,22 @@ app.use('/images',express.static("images"))
 //middlewares
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors())
+
+app.use(function (req, res, next) {
+
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', 'https://www.reachtheworld.tech');
+
+  
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  // Pass to next layer of middleware
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+  next();
+});
 
 dotenv.config();
 
