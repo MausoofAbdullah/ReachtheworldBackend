@@ -15,6 +15,8 @@ import adminRoute from "./Routes/adminRoute.js"
 //Routes
 const app = express();
 
+app.options('*', cors())
+
 //to serve images for public
 app.use(express.static("public"))
 app.use('/images',express.static("images"))
