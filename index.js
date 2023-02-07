@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import cors from "cors"
+import cors from "cors" 
 import AuthRoute from "./Routes/Auth.js"
 import userRoute from "./Routes/userRoute.js"
 import PostRoute from "./Routes/PostRoute.js"
@@ -20,25 +20,28 @@ const app = express();
 app.use(express.static("public"))
 app.use('/images',express.static("images"))
 
+
+app.options('*', cors())
+
 //middlewares
-app.use(function (req, res, next) {
+// app.use(function (req, res, next) {
 
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'https://www.reachtheworld.tech/');
+//   // Website you wish to allow to connect
+//   res.setHeader('Access-Control-Allow-Origin', "https://reachtheworld.tech");
 
   
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//   // Request methods you wish to allow
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  // Pass to next layer of middleware
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//   // Pass to next layer of middleware
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
 
-  next();
-});
+//   next();
+// });
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-// app.use(cors());
+app.use(cors());
 
 
 dotenv.config();
