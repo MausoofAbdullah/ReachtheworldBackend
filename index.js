@@ -24,7 +24,7 @@ app.use('/images',express.static("images"))
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'https://www.reachtheworld.tech');
+  res.setHeader('Access-Control-Allow-Origin', 'https://www.reachtheworld.tech/');
 
   
   // Request methods you wish to allow
