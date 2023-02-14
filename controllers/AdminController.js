@@ -73,8 +73,9 @@ export const adminRegister = async (req, res) => {
   export const adminUserList= async (req, res, next) => {
     try {
       const users = await UserModel.find().lean()
-  
+      
       res.status(200).json({ users })
+     
     } catch (error) {
       console.log(error)
     }
