@@ -231,7 +231,9 @@ console.log(setusertoken,"set")
               from:"mausoofabdullah@gmail.com",
               to:username.username,
               subject:"Sending Email For password Reset",
-              text:`This Link Valid For 2 MINUTES http://localhost:3000/newpassword/${userfind.id}/${setusertoken.verifytoken}`
+              // text:`This Link Valid For 2 MINUTES http://localhost:3000/newpassword/${userfind.id}/${setusertoken.verifytoken}`
+              text:`This Link Valid For 2 MINUTES https://www.friend.reachtheworld.tech/${userfind.id}/${setusertoken.verifytoken}`
+
           }
           let transporter = nodeMailer.createTransport({
             service: "gmail",
