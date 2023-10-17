@@ -21,7 +21,11 @@ app.use(express.static("public"))
 app.use('/images',express.static("images"))
 
 
-app.options('*', cors())
+app.options('*', cors({
+  origin:["https://client-reachtheworld.vercel.app"],
+  methods:[POST,GET],
+  credentials:true
+}))
 
 //middlewares
 // app.use(function (req, res, next) {
