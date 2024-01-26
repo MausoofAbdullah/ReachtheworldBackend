@@ -232,7 +232,7 @@ console.log(setusertoken,"set")
               to:username.username,
               subject:"Sending Email For password Reset",
               // text:`This Link Valid For 2 MINUTES http://localhost:3000/newpassword/${userfind.id}/${setusertoken.verifytoken}`
-              text:`This Link Valid For 2 MINUTES https://www.friend.reachtheworld.tech/newpassword/${userfind.id}/${setusertoken.verifytoken}`
+              text:`This Link Valid For 2 MINUTES https://client-reachtheworld.vercel.app/newpassword/${userfind.id}/${setusertoken.verifytoken}`
 
           }
           let transporter = nodeMailer.createTransport({
