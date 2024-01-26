@@ -11,7 +11,7 @@ let transporter = nodeMailer.createTransport({
     service: "gmail",
     auth:{
         user: process.env.FROM_EMAIL,
-        pass: process.env.FROM_PASSWORD
+              pass: process.env.FROM_PASSWORD
     }
 })
 
@@ -37,7 +37,7 @@ export const sendOtpVerificationEmail = async({_id,username},res) => {
         // mail options
 
         const mailOptions = {
-            from:"mausoofabdullah@gmail.com",
+            from:"otp.nms@gmail.com",
             to:username,
             subject:"Verify Your Email",
             html:`<p>Enter <b>${otp}</b> in the app to verify your email address and complete the signup</p><p>This code <b>expires in 1 hour </b>.</p>`

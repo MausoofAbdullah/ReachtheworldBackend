@@ -103,20 +103,20 @@ export const loginUser = async (req, res) => {
 
 //forgot password
 
-// export const forgotPassword=async(req,res)=>{
-//   const {username}=req.body
-//   try {
-//     const user=await UserModel.findOne({username:username})
-//     if(user){
-//       await sendOtpVerificationEmail(user, res)
-//     }else{
-//       res.status(400).json("user does not exist")
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
+export const forgotPassword=async(req,res)=>{
+  const {username}=req.body
+  try {
+    const user=await UserModel.findOne({username:username})
+    if(user){
+      await sendOtpVerificationEmail(user, res)
+    }else{
+      res.status(400).json("user does not exist")
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
     
-//   }
-// }
+  }
+}
 //otpverification
 
 export const verifyotp = async (req, res) => {
@@ -228,7 +228,7 @@ console.log(setusertoken,"set")
 
       if(setusertoken){
           const mailOptions = {
-              from:"mausoofabdullah@gmail.com",
+              from:"otp.nms@gmail.com",
               to:username.username,
               subject:"Sending Email For password Reset",
               // text:`This Link Valid For 2 MINUTES http://localhost:3000/newpassword/${userfind.id}/${setusertoken.verifytoken}`

@@ -39,14 +39,14 @@ export const adminRegister = async (req, res) => {
 
 
   export const adminLogin = async (req, res) => {
-    const { username, password } = req.body;
+    const { Email,password} = req.body;
   
     try {
-      const admin = await UserModel.findOne({ username: username });
+      const admin = await UserModel.findOne({ Email:Email,isAdmin:true });
       console.log(admin);
   
       if (admin) {
-        const validity = await bcrypt.compare(password, admin.password);
+        const validity = await bcrypt.compare(password, admin.Password);
   
         if (!validity) {
           res.status(400).json("Wrong password");

@@ -45,9 +45,11 @@ app.use(cors());
 
 
 dotenv.config();
+mongoose.set('strictQuery',true)
+
 
 mongoose
-  .connect(process.env.MONGO_DB, {
+  .connect("mongodb+srv://MausoofAbdullah2:9686327955@cluster0.79bwqcz.mongodb.net/SocialMedia?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
