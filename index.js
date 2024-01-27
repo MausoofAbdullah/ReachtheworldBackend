@@ -49,7 +49,7 @@ mongoose.set('strictQuery',true)
 
 
 mongoose
-  .connect("mongodb+srv://MausoofAbdullah2:9686327955@cluster0.79bwqcz.mongodb.net/SocialMedia?retryWrites=true&w=majority", {
+  .connect(process.env.MONGO_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

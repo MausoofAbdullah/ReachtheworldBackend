@@ -32,6 +32,7 @@ export const registerUser = async (req, res) => {
 
   try {
     const oldUser = await UserModel.findOne({ username });
+    console.log(oldUser,"old")
     
 
     if (oldUser) {
