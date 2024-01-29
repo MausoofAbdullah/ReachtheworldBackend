@@ -32,19 +32,23 @@ export const registerUser = async (req, res) => {
 
   try {
     const oldUser = await UserModel.findOne({ username });
-    console.log(oldUser,"old")
+    
     
 
     if (oldUser) {
+      if(oldUser.verified===false){
+        await UserModel.deleteOne({ username });
+      }
       return res
         .status(400)
         .json({ message: "username is already registered" });
     }
 
-    const user = await newUser.save();
     
+    const sauser=await sendOtpVerificationEmail(newUser,res)
+    console.log(sauser,'saved user')
+    const user = await newUser.save();
     console.log(user, "register user");
-    await sendOtpVerificationEmail(user, res)
 
 
  
@@ -73,7 +77,7 @@ export const loginUser = async (req, res) => {
     const user = await UserModel.findOne({ username: username });
     if (user) {
       const validity = await bcrypt.compare(password, user.password);
-      if(user.Active===false){
+      if(user.Active===false || user.verified===false){
         res.status(400).json("You donot have permission")
       }
 
@@ -144,7 +148,8 @@ export const verifyotp = async (req, res) => {
           const validOTP = await bcrypt.compare(otp, hashedOTP);
           if (!validOTP) {
             // supplied otp is wrong
-            throw new Error("Invalid code passed. Check your inbox.");
+           
+            throw new Error("Invalid otp");
           } else {
             // UserModel.updateOne({_id:userId},{verified:true})
             await UserModel.findOneAndUpdate(

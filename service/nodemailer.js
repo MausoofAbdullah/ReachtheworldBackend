@@ -42,7 +42,7 @@ export const sendOtpVerificationEmail = async({_id,username},res) => {
             subject:"Verify Your Email",
             html:`<p>Enter <b>${otp}</b> in the app to verify your email address and complete the signup</p><p>This code <b>expires in 1 hour </b>.</p>`
         }
-        console.log(mailOptions,"check sender mail")
+        
 
         // hash the otp
         const salt = await bcrypt.genSalt(10)
